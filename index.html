@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRICKET GAME</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div>
+    <h1>BAT BALL STUMP GAME</h1>
+
+    <button onclick="
+    //This Will genrate random number between 0 and 3
+    let  computerChoice = generateComputerChoice();
+    let resultMsg = getResult('Bat', computerChoice);
+    showResult('Bat', computerChoice, resultMsg);
+    ">Bat</button>
+
+
+    <button 
+    onclick="
+    computerChoice = generateComputerChoice();
+     resultMsg = getResult('Ball', computerChoice);
+     showResult('Ball', computerChoice, resultMsg);"
+    >Ball</button>
+    
+    <button
+    onclick="
+    //This Will genrate random number between 0 and 3
+      computerChoice = generateComputerChoice();
+      resultMsg = getResult('Stump', computerChoice);
+      showResult('Stump', computerChoice, resultMsg);
+    ">Stump</button>
+
+    <h3 id="user-move"></h3>
+    <h3 id="computer-move"></h3>
+    <h3 id="result"></h3>
+    <h3 id="score"></h3>
+
+     <div class="image">
+    <img src="download (1).png" alt="">
+    <p><b>TRY YOUR LUCK</b></p>
+</div>
+</div>
+
+
+
+<script>
+
+    let score = {
+        Win: 0,
+        Loss: 0,
+        tie:0,
+
+        displayscore: function() {
+           return `Won:${score.Win}, Lost:${score.Loss}, Tie:${score.tie}`
+
+        }
+    };
+   
+    function generateComputerChoice() {
+         //This Will genrate random number between 0 and 3
+    let randomNumber = Math.random()*3;
+    if(randomNumber > 0 && randomNumber <= 1) {
+         return 'Bat';
+    } else if(randomNumber >1 && randomNumber <= 2 ) {
+        return 'Ball';
+    } else  {
+         return 'Stump';
+    }
+    }
+
+    function getResult(userMove, computerMove) {
+        if(userMove === 'Bat') {
+            if(computerMove === 'Ball') {
+         score.Win++;
+          return ('User won');
+        } else if(computerMove === 'Bat') {
+         score.tie++;
+          return (`It's a tie`);
+        }else if(computerMove === 'Stump') {
+         score.Loss++;
+          return ('Computer has won');
+        }
+
+        } else if(userMove === 'Ball') {
+            if(computerMove === 'Ball') {
+        score.tie++;
+        return (`It's a tie`);
+        } else if(computerMove === 'Bat') {
+         score.Loss++;
+        return ('Computer has won');
+        }else if(computerMove === 'Stump') {
+         score.Win++;
+        return ('User won');
+        }
+
+
+        } else {
+            if(computerMove === 'Ball') {
+         score.Loss++;
+        return ('Computer has won');
+        } else if(computerMove === 'Bat') {
+        score.Win++;
+        return ('User won');
+        }else if(computerMove === 'Stump') {
+        score.tie++;
+        return (`It's a tie`);
+        }
+
+            
+        }
+        
+    }
+
+    function showResult(userMove, computerMove, resultMsg) {
+        // console.log(score);
+
+        document.querySelector('#user-move').innerText = `You have choosen ${userMove}`;
+        document.querySelector('#computer-move').innerText = ` Computer Choice is ${computerMove}`;
+        document.querySelector('#result').innerText = ` ${resultMsg} `;
+        document.querySelector('#score').innerText = ` ${score.displayscore()}`;
+        alert(`You have choosen ${userMove} Computer Choice is ${computerMove} and 
+        
+        ${resultMsg} 
+
+        ${score.displayscore()}
+        
+        `);
+    }
+
+
+</script>
+    
+</body>
+</html>

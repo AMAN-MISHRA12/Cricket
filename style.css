@@ -1,0 +1,32 @@
+body{
+    text-align: center;
+}
+
+div{
+    background-color: rgb(93, 167, 93);
+    display: inline-block;
+    /* height: 500px; */
+    width: 500px;
+}
+
+.image{
+    margin-top: 70px;
+}
+
+.image img{
+    height: 200px;
+    width: 200px;
+}
+
+button{
+    padding: 10PX 20PX;
+    border: 2px solid black;
+    font-weight: 600;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-radius: 10px;
+}
+
+button:hover{
+    background-color: red;
+    color:white ;
+}
